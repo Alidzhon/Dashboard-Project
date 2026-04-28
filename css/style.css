@@ -1,0 +1,341 @@
+/* --- Базовые стили и Сброс --- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ecf0f1;
+}
+
+/* --- Боковая панель (Side Panel) --- */
+#side-panel {
+  width: 250px;
+  background-color: #2c3e50;
+  color: #fff;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#toggle-button {
+  background-color: #34495e;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  margin: 0;
+  text-align: center;
+  font-size: 1em;
+}
+
+#side-panel.hidden {
+  width: 0;
+}
+
+#side-panel nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+/* --- Выбор месяца и года --- */
+.month-selector {
+  padding: 20px;
+  border-bottom: 1px solid #34495e;
+}
+
+.month-selector h3 {
+  margin: 0 0 15px;
+  color: #ecf0f1;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.month-select,
+.year-select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #34495e;
+  color: #ecf0f1;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.month-select:hover,
+.year-select:hover {
+  background-color: #4a627a;
+}
+
+.month-select:focus,
+.year-select:focus {
+  outline: 2px solid #3498db;
+  background-color: #4a627a;
+}
+
+/* --- Навигация --- */
+.nav-item {
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #ecf0f1;
+  transition: background-color 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.nav-item:hover {
+  background-color: #34495e;
+}
+
+.nav-item.active {
+  background-color: #34495e;
+  border-left-color: #3498db;
+  font-weight: 700;
+}
+
+/* --- Основной контент --- */
+#main-content {
+  flex-grow: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+#main-content h1 {
+  color: #2c3e50;
+  border-bottom: 2px solid #bdc3c7;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* --- Таблицы --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+thead {
+  background-color: #34495e;
+  color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #e8f4f8;
+}
+
+/* --- Сортировка и Фильтрация --- */
+th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+th.sortable:hover {
+  background-color: #4a627a;
+}
+
+th.sortable.sorted {
+  background-color: #2c3e50;
+}
+
+.sort-icon {
+  margin-left: 5px;
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+
+.filter-icon {
+  margin-left: 5px;
+  font-size: 0.9em;
+  opacity: 0.5;
+  cursor: pointer;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.filter-icon:hover {
+  opacity: 1;
+  background-color: #4a627a;
+}
+
+/* --- Поп-апы фильтров --- */
+.filter-popup {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.filter-popup input,
+.filter-popup select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.filter-popup button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.filter-popup .accept-filter { background-color: #3498db; color: #fff; }
+.filter-popup .cancel-filter { background-color: #95a5a6; color: #fff; }
+
+/* --- Чипсы (Фильтр-метки) --- */
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+  min-height: 30px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  background-color: #3498db;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.9em;
+}
+
+.filter-chip .chip-remove {
+  cursor: pointer;
+  margin-left: 8px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  padding: 0 5px;
+}
+
+.clear-all-chip {
+  background-color: #e74c3c !important;
+  cursor: pointer;
+}
+
+/* --- Формы и Правая панель --- */
+.side-panel-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+  z-index: 1001;
+  padding: 20px;
+  overflow-y: auto;
+  transform: translateX(100%);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.side-panel-right.open {
+  transform: translateX(0);
+  visibility: visible;
+  opacity: 1;
+}
+
+#add-employee-form input, 
+#add-employee-form select,
+#add-project-form input,
+#add-project-form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Валидация форм */
+input:invalid, select:invalid { border-color: #e74c3c; }
+input:valid, select:valid { border-color: #27ae60; }
+
+.error-message {
+  display: none;
+  color: #e74c3c;
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+
+.error-message.show { display: block; }
+
+/* --- Кнопки --- */
+.add-btn, .assign-btn, #add-btn-form {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-btn { background-color: #28a745; color: #fff; padding: 10px 15px; }
+.add-btn:hover { background-color: #218838; }
+
+.assign-btn { background-color: #3498db; color: #fff; padding: 6px 14px; }
+.assign-btn:hover { background-color: #2980b9; }
+
+/* --- Инлайн редактирование --- */
+.editable-position, .editable-salary {
+  cursor: pointer;
+  position: relative;
+}
+
+.editable-position:hover, .editable-salary:hover {
+  background-color: #ecf0f1;
+}
+
+.editable-position:after, .editable-salary:after {
+  content: "✎";
+  opacity: 0;
+  margin-left: 8px;
+  color: #95a5a6;
+}
+
+.editable-position:hover:after, .editable-salary:hover:after {
+  opacity: 1;
+}
+
+.inline-edit-input, .inline-edit-select {
+  width: 100%;
+  padding: 4px 8px;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+}
+
+/* --- Вспомогательные классы --- */
+.hidden { display: none !important; }
+.over-capacity { color: #e74c3c; font-weight: 700; }
