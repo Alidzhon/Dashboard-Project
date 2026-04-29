@@ -216,6 +216,30 @@
             </table>
         </div>
     </div>
+
+<div id="add-project-panel" class="side-panel-right">
+    <h2>Add New Project</h2>
+    <form id="add-project-form">
+        <label for="companyName">Company Name: *</label>
+        <input type="text" id="companyName" name="companyName" required>
+
+        <label for="projectName">Project Name: *</label>
+        <input type="text" id="projectName" name="projectName" required>
+
+        <label for="budget">Budget: *</label>
+        <input type="number" id="budget" name="budget" required min="0">
+
+        <label for="capacity">Employee Capacity: *</label>
+        <input type="number" id="capacity" name="capacity" required min="1">
+
+        <div class="form-buttons" style="margin-top: 20px;">
+            <button type="submit" class="add-btn">Create Project</button>
+            <button type="button" id="cancel-project-btn" class="cancel-filter">Cancel</button>
+        </div>
+    </form>
+</div>
+
    <script src="js/script.js"></script>
+   <script src="js/panel.js"></script>
 </body>
 </html>
